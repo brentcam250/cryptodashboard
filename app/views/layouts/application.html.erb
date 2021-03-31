@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cryptodash</title>
+    <title>CryptoDash</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,47 @@
   </head>
 
   <body>
-    <%= yield %>
+  <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class = 'navbar-brand'>
+    <div class = 'navbar-item'>
+      <b>CryptoDash - On Rails!</b>
+    </div>
+  </div>
+  <div class="navbar-end">
+    <div class = 'navbar-item'>
+      <%= link_to 'Home', root_path, class: 'button is-link' %>
+    </div>
+    <% if current_user %>
+      <div class = 'navbar-item'>
+        <%#= link_to 'Your Profile', user_path(current_user), class: 'button is-link' %>
+      </div>
+    <% end %>
+    <div class = 'navbar-item'>
+      <%#= link_to 'Users', users_path, class: 'button is-link' %>
+    </div>
+    <div class = 'navbar-item'>
+      <%#= link_to 'New Post', new_post_path, class: 'button is-link' %>
+    </div>
+    <div class="navbar-item">
+      <div class="buttons">
+        <% if current_user %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'button is-danger' %>
+        <% else %>
+          <%= link_to "Login", new_user_session_path, class: 'button is-link' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</nav>
+<% flash.each do |type, msg| %>
+  <div class = 'notification is-info'>
+    <%= msg %>
+  </div>
+<% end %>
+<div class = 'columns is-centered'>
+      <%= yield %>
+  
+
+</div>
   </body>
 </html>
