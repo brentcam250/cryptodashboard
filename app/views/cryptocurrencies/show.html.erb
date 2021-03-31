@@ -1,0 +1,16 @@
+<div class = 'column'> 
+<div class = 'card'> 
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Name:</strong>
+    <%= @cryptocurrency.name %>
+  </p>
+  <p>
+    <strong>Symbol:</strong>
+    <%= @cryptocurrency.symbol %>
+  </p>
+
+  <%= link_to 'Back', cryptocurrencies_path %>
+</div>
+</div>
