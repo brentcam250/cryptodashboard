@@ -6,6 +6,10 @@ ruby '2.7.2'
 #user auth
 gem 'devise'
 
+#gems for interacting with sochain api 
+gem 'httpclient'
+gem 'json'
+
 #styles
 gem "bulma-rails", "~> 0.9.1"
 
