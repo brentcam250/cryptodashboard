@@ -8,6 +8,30 @@ class CryptocurrenciesController < ApplicationController
 
   # GET /cryptocurrencies/1 or /cryptocurrencies/1.json
   def show
+    # @coin = params[:symbol]
+    # @base_currency = params[:currency]
+    @cryptocurrency = Cryptocurrency.find(params[:id])
+    @coin = @cryptocurrency.symbol
+    @base_currency = "USD"
+        # require 'httpclient'
+        # require 'json'
+
+        client = HTTPClient.new
+
+        response = client.get("https://chain.so//api/v2/get_price/#{@coin}/#{@base_currency}")
+
+        if response.status_code == 200 then
+        # everything went swimmingly
+
+        content = JSON.parse response.content
+        @content = content
+
+
+        @price = content['data']['prices'][1]['price']
+        # @name = "Name: "+content['data']['name']
+        # @blocks = "Total Blocks: "+content['data']['blocks'].to_s
+
+        end
   end
 
   # GET /cryptocurrencies/new

@@ -10,6 +10,14 @@
     <strong>Symbol:</strong>
     <%= @cryptocurrency.symbol %>
   </p>
+  <p>
+    <strong>Price:</strong>
+    $<%= @price %> <%= @base_currency %>
+  </p>
+  <p>
+    <strong>INFO:</strong>
+    <%= @content %>
+  </p>
 
   <%= link_to 'Back', cryptocurrencies_path %>
 </div>
