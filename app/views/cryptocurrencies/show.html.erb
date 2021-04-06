@@ -12,11 +12,14 @@
   </p>
   <p>
     <strong>Price:</strong>
-    $<%= @price %> <%= @base_currency %>
+    $<%= @price %> <%#= @base_currency %>
   </p>
   <p>
     <strong>INFO:</strong>
     <%= @content %>
+    <% if @content.nil? %>
+      No content 
+    <% end %> 
   </p>
 
   <%= link_to 'Back', cryptocurrencies_path %>

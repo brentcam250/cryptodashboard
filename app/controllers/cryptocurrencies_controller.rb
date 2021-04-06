@@ -13,12 +13,20 @@ class CryptocurrenciesController < ApplicationController
     @cryptocurrency = Cryptocurrency.find(params[:id])
     @coin = @cryptocurrency.symbol
     @base_currency = "USD"
-        # require 'httpclient'
-        # require 'json'
+        require 'httpclient'
+        require 'json'
 
-        client = HTTPClient.new
+        client = HTTPClient.new #default_header: {"Accepts" => "application/json", 'X-CMC_PRO_API_KEY:' => 'b50921e9-ed4f-4cd7-9e9f-8a5de029f8f3' }
 
-        response = client.get("https://chain.so//api/v2/get_price/#{@coin}/#{@base_currency}")
+        query = {
+          'convert' => 'USD', 
+          'CMC_PRO_API_KEY' => 'b50921e9-ed4f-4cd7-9e9f-8a5de029f8f3', 
+          'symbol' => "#{@coin}"
+        }
+        headers = ['Accepts: application/json', 'X-CMC_PRO_API_KEY: b50921e9-ed4f-4cd7-9e9f-8a5de029f8f3']
+        # response = client.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest', query)
+        response = client.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest', query)
+        # response = client.get("https://chain.so//api/v2/get_price/#{@coin}/#{@base_currency}")
 
         if response.status_code == 200 then
         # everything went swimmingly
@@ -26,11 +34,15 @@ class CryptocurrenciesController < ApplicationController
         content = JSON.parse response.content
         @content = content
 
-
-        @price = content['data']['prices'][1]['price']
+        @price = content['data']["#{@coin}"]['quote']['USD']['price']
+        # @price = content['data']['prices'][1]['price']
         # @name = "Name: "+content['data']['name']
         # @blocks = "Total Blocks: "+content['data']['blocks'].to_s
 
+        else 
+          # @error = response.error
+          content = JSON.parse response.content
+          @content = content
         end
   end
 
