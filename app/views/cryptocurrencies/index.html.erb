@@ -17,7 +17,22 @@
 
             <td><%= cryptocurrency.name %></td>
             <td><%= link_to 'Show', cryptocurrency %></td>
-            <td><%#= link_to 'Edit', edit_cryptocurrency_path(cryptocurrency) %></td>
+            <td><%#= link_to 'Follow', edit_cryptocurrency_path(cryptocurrency) %></td>
+            <td>
+            <% if current_user.cryptocurrencies.include? (cryptocurrency) %> 
+              Already Following 
+            <% else %>
+              
+              <%= form_with(model: @follow, url: follows_path, method: :post) do |f| %>
+                          <%= f.label 'Follow' %>
+                          <%= f.hidden_field :follower_id, :value => current_user.id %>
+                          <%= f.hidden_field :followable_type, :value => 'Cryptocurrency' %> 
+                          <%= f.hidden_field :followable_id, :value => cryptocurrency.id %>  
+
+                          <%= f.submit 'Follow' %>
+                      <% end %>
+            <% end %>
+            </td>
             <td><%#= link_to 'Destroy', cryptocurrency, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
@@ -27,3 +42,4 @@
   <br>
 
 </div>
+

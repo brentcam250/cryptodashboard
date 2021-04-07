@@ -4,6 +4,7 @@ class CryptocurrenciesController < ApplicationController
   # GET /cryptocurrencies or /cryptocurrencies.json
   def index
     @cryptocurrencies = Cryptocurrency.all
+    @follow = Follow.new
   end
 
   # GET /cryptocurrencies/1 or /cryptocurrencies/1.json
