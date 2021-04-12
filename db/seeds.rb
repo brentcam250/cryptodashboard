@@ -7,6 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-cryptocurrencies = Cryptocurrency.create([{name: 'Bitcoin', symbol: 'BTC'}, {name: 'Ethereum', symbol: 'ETH'}, {name: 'Cardano', 'ADA'}])
+cryptocurrencies = Cryptocurrency.create([{name: 'Bitcoin', symbol: 'BTC'}, {name: 'Ethereum', symbol: 'ETH'}, {name: 'Cardano', symbol:'ADA'}])
 
 wallets = Wallet.create([{cryptocurrency_id: 1, address: '1Bd2E6DP7KRE4qnsDeTebUQ7N43NtFy3Zi'}])
