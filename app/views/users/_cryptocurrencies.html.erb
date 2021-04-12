@@ -1,0 +1,8 @@
+<div class = 'card'>
+    <% @followed_currencies.each do |currency| %>
+        <div class = 'card-content'>
+            <p><%= currency.name %></p>
+            <p><%= currency.symbol %></p>
+        </div>
+    <% end %>
+</div>

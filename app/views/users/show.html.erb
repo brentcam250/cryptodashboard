@@ -3,17 +3,30 @@
         <div class = 'card-header is-centered'>
             <p class = 'title is-4'>User: <%= @user.email %></p>
         </div>
-        <div class = 'card-content'>
-            <p class = 'content' >Content: <%#= @post.content %></p>
-        </div>
-        <div class = 'card-content'>
-            <%#= pluralize(@post.likes.length, "like") %>
-            <br />
+        <% unless @cryptocurrencies.blank? %>
+            <div class = 'card-content'>
+                <p class = 'content' >Followed Currencies: <%= @cryptocurrencies.length %></p>
+            </div>
+            <div class = 'card-content'>
+                <%#= render @cryptocurrencies %>
+                <% @follows.each do |follow| %>
+                    <p><%#= follow.followable.symbol %></p>
+                    <%= link_to follow.followable.symbol, cryptocurrency_path(follow.followable) %>
+                    <br />
 
-            <%#= pluralize(@post.comments.length, "comment") %>
-            
+                <% end %> 
+
+                <%#= pluralize(@post.comments.length, "comment") %>
+                
+            </div>
+        <% else %>
+
+        <div class = 'card-content'> 
+            <p class = 'content'>You havent followed any currencies =(</p>
+            <%= link_to cryptocurrencies_path, "Cryptocurrencies" %>
         </div>
 
+        <% end %>
             
     </div>
     <%#= render 'actions' %>
