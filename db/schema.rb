@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2021_04_08_185025) do
 
   create_table "wallets", force: :cascade do |t|
     t.string "address"
-    t.string "cryptocurrency_symbol"
+    t.integer "cryptocurrency_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

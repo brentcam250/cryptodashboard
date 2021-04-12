@@ -11,7 +11,7 @@
                 <%#= render @cryptocurrencies %>
                 <% @follows.each do |follow| %>
                     <p><%#= follow.followable.symbol %></p>
-                    <%= link_to follow.followable.symbol, cryptocurrency_path(follow.followable) %>
+                    <%= link_to follow.followable, cryptocurrency_path(follow.followable) %>
                     <br />
 
                 <% end %> 

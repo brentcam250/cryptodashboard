@@ -1,9 +1,15 @@
-<p id="notice"><%= notice %></p>
+<div class = 'card mt-4'>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @wallet.address %>
-</p>
+  <p>
+    <strong>Cryptocurrency:</strong>
+    <%= @wallet.cryptocurrency.symbol %><br />
+  </p>
+  <p>
+    <strong>Address:</strong>
+    <%= @wallet.address %><br />
+  </p>
 
-<%= link_to 'Edit', edit_wallet_path(@wallet) %> |
-<%= link_to 'Back', wallets_path %>
+  <%= link_to 'Edit', edit_wallet_path(@wallet) %> |
+  <%= link_to 'Back', wallets_path %>
+</div>

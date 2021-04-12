@@ -4,10 +4,13 @@ class WalletsController < ApplicationController
   # GET /wallets or /wallets.json
   def index
     @wallets = Wallet.all
+    @follow = Follow.new
   end
 
   # GET /wallets/1 or /wallets/1.json
   def show
+
+
   end
 
   # GET /wallets/new
