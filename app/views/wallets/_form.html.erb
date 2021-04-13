@@ -12,8 +12,18 @@
   <% end %>
 
   <div class="field">
+      
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+
     <%= form.label :address %>
     <%= form.text_field :address %>
+    
+    <%= form.label :cryptocurrency %>
+    <%#= form.collection_select(:cryptocurrency, :cryptocurrency_id, Cryptocurrency.all, :id, :symbol_name, prompt: true ) %>
+    <%#= form.select("cryptocurrency", "cryptocurrency_id", Cryptocurrency.all.collect{|c| [ c.name, c.id ]}) %>
+    <%= form.collection_select :cryptocurrency_id, Cryptocurrency.order(:name),:id,:name, include_blank: true %>
+
   </div>
 
   <div class="actions">
