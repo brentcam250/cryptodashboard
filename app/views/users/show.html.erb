@@ -10,8 +10,14 @@
             <div class = 'card-content'>
                 <%#= render @cryptocurrencies %>
                 <% @follows.each do |follow| %>
-                    <p><%#= follow.followable.symbol %></p>
-                    <%= link_to follow.followable, cryptocurrency_path(follow.followable) %>
+                    <%= follow.followable.class %>
+                    <% if follow.followable.instance_of?(Wallet) %>
+                        <p><%= follow.followable.address %> (<%=follow.followable.cryptocurrency.symbol%>)</p>
+                    <% elsif follow.followable.instance_of?(Cryptocurrency) %>
+                        <p><%= follow.followable.symbol %></p>
+                    <% end %>
+
+                    <%#= link_to follow.followable, cryptocurrency_path(follow.followable) %>
                     <br />
 
                 <% end %> 
