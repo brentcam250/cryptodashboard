@@ -39,6 +39,12 @@ class CryptocurrenciesController < ApplicationController
         # @price = content['data']['prices'][1]['price']
         # @name = "Name: "+content['data']['name']
         # @blocks = "Total Blocks: "+content['data']['blocks'].to_s
+        @percent_change_1h = content['data']["#{@coin}"]['quote']['USD']['percent_change_1h']
+        @percent_change_24h = content['data']["#{@coin}"]['quote']['USD']['percent_change_24h']
+        @percent_change_7d = content['data']["#{@coin}"]['quote']['USD']['percent_change_7d']
+        @percent_change_30d = content['data']["#{@coin}"]['quote']['USD']['percent_change_30d']
+        @market_cap = content['data']["#{@coin}"]['quote']['USD']['market_cap']
+        @volume_24h = content['data']["#{@coin}"]['quote']['USD']['volume_24h']
 
         else 
           # @error = response.error

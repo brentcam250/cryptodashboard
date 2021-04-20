@@ -14,13 +14,29 @@
     <strong>Price:</strong>
     $<%= @price %> <%#= @base_currency %>
   </p>
-  <p>
     <strong>INFO:</strong>
-    <%= @content %>
-    <% if @content.nil? %>
-      No content 
-    <% end %> 
-  </p>
+    <table class = 'table'>
+      <tr>
+          <td>last hour change:<%= @percent_change_1h %>%</td>
+      </tr>
+      <tr>
+          <td>last 24 hours change:<%= @percent_change_24h %>%</td>
+      </tr>
+      <tr>
+          <td>last 7 days change:<%= @percent_change_7d %>%</td>
+      </tr>
+      <tr>
+          <td>last 30 days change:<%= @percent_change_30d %>%</td>
+      </tr>
+      <tr>
+          <td>market cap: $<%= number_with_delimiter(@market_cap, :delimiter => ',') %></td>
+      </tr>
+      <tr>
+          <td>24 hour volume: $<%= number_with_delimiter(@volume_24h, :delimiter => ',') %></td>
+      </tr>
+    </table>
+
+    <p>RAW: <%= @content %></p>
 
   <%= link_to 'Back', cryptocurrencies_path %>
 </div>
