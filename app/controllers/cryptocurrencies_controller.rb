@@ -36,6 +36,12 @@ class CryptocurrenciesController < ApplicationController
         @content = content
 
         @price = content['data']["#{@coin}"]['quote']['USD']['price']
+
+        #save the last checked price in the db so we dont have to do as many api calls.
+        @cryptocurrency.last_price = @price 
+        @cryptocurrency.last_price_date = Time.now
+        @cryptocurrency.save
+
         # @price = content['data']['prices'][1]['price']
         # @name = "Name: "+content['data']['name']
         # @blocks = "Total Blocks: "+content['data']['blocks'].to_s

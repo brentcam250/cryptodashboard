@@ -24,7 +24,6 @@
             <% else %>
               
               <%= form_with(model: @follow, url: follows_path, method: :post) do |f| %>
-                          <%= f.label 'Follow' %>
                           <%= f.hidden_field :follower_id, :value => current_user.id %>
                           <%= f.hidden_field :followable_type, :value => 'Cryptocurrency' %> 
                           <%= f.hidden_field :followable_id, :value => cryptocurrency.id %>  
@@ -33,7 +32,9 @@
                       <% end %>
             <% end %>
             </td>
-            <td><%#= link_to 'Destroy', cryptocurrency, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% unless cryptocurrency.last_price.nil? %>
+              <td>Last price: <%= cryptocurrency.last_price %> as of <%= cryptocurrency.last_price_date %></td>
+            <% end %>
         </tr>
       <% end %>
     </tbody>
