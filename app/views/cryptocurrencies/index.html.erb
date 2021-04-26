@@ -33,7 +33,7 @@
             <% end %>
             </td>
             <% unless cryptocurrency.last_price.nil? %>
-              <td>Last price: <%= cryptocurrency.last_price %> as of <%= cryptocurrency.last_price_date %></td>
+              <td>Last price: $<%= cryptocurrency.last_price %> (USD) as of <%= cryptocurrency.last_price_date %></td>
             <% end %>
         </tr>
       <% end %>

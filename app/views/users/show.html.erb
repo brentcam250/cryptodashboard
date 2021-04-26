@@ -16,7 +16,7 @@
                     <% elsif follow.followable.instance_of?(Cryptocurrency) %>
                         <p><%= follow.followable.symbol %></p>
                             <% unless follow.followable.last_price.nil? %>
-                                <p>Last price: <%= follow.followable.last_price %> as of <%= follow.followable.last_price_date %></p>
+                                <p>Last price: $<%= follow.followable.last_price %> as of <%= follow.followable.last_price_date %></p>
                             <% end %>
                     <% end %>
 
