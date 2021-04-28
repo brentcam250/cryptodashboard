@@ -8,6 +8,9 @@
                 <p class = 'content' >Followed Currencies: <%= @cryptocurrencies.length %></p>
             </div>
             <div class = 'card-content'>
+                <p class = 'content' >Followed Wallets: <%= @wallets.length %></p>
+            </div>
+            <div class = 'card-content'>
                 <%#= render @cryptocurrencies %>
                 <% @follows.each do |follow| %>
                     <%= follow.followable.class %>

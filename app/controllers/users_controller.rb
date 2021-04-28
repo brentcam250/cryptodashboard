@@ -25,5 +25,6 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         @follows = @user.follows
         @cryptocurrencies = @user.cryptocurrencies 
+        @wallets = @user.wallets
     end
 end
